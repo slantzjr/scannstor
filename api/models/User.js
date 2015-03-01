@@ -7,19 +7,31 @@
 
 module.exports = {
 
+  schema: true,
+
   attributes: {
   	name: {
   		type: 'string',
   		required: true
   	},
   	
-  	password: 'string',
+  	password: {
+  		type: 'string',
+  		protected: true
+  	},
   	
   	email: {
   		type: 'email',
   		unique: true,
   		required: true
+  	},
+
+  	encryptedPassword: {
+  		type: 'string',
+  		protected: true
   	}
+
+
   }
 };
 

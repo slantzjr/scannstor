@@ -1687,6 +1687,11 @@ select:focus:invalid:focus {
   clear: both;
 }
 
+.valid {
+  background-color: #86C67C;
+  border-radius: 3px;
+}
+
 .help-block,
 .help-inline {
   color: #595959;
