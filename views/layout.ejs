@@ -29,12 +29,35 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
 
   <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">Scannstor.com</a>
+        </div>
+      </div>
+    </div>
+   
     <%- body %>
+
+    <div class="containter">
+      <hr>
+      <footer class="footer">
+        <div class="pull-right">
+          <a href="http://scannstor.com/">scannstor.com</a>
+        </div>
+      </footer>
+    </div>
 
 
 
@@ -89,6 +112,7 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/bootstrap.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
