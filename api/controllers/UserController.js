@@ -11,7 +11,15 @@ module.exports = {
 	},
 
 	create: function (req, res, next) {
-		User.create(req.params.all(), function userCreated(err, user) {
+
+		var userObj = {
+			name: req.param('name'),
+			email: req.param('email'),
+			password: req.param('password'),
+			confirmation: req.param('confirmation')
+		}
+		
+		User.create(userObj, function userCreated(err, user) {
 
 			if (err) {
 				console.log(err);
@@ -22,7 +30,8 @@ module.exports = {
 				return res.redirect('/user/newUser');
 			}
 
-			//res.json(user);
+			req.session.authenticated = true;
+			req.session.User = user;
 
 			res.redirect('/user/show/'+user.id);
 		});
@@ -63,7 +72,20 @@ module.exports = {
 
 	update: function (req, res, next) {
 
-		User.update(req.param('id'), req.params.all(), function foundUser (err, user) {
+		if (req.session.User.admin) {
+			var userObj = {
+				name: req.param('name'),
+				email: req.param('email'),
+				admin: req.param('admin')
+			}
+		} else {
+			var userObj = {
+				name: req.param('name'),
+				email: req.param('email')
+			}
+		}
+
+		User.update(req.param('id'), userObj, function foundUser (err, user) {
 			if (err) return res.redirect('/user/edit/' + req.param('id'));
 
 			res.redirect('/user/show/' + req.param('id'));
