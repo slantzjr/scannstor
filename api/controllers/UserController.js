@@ -7,7 +7,7 @@
 
 module.exports = {
 	'new': function (req, res) {
-		res.view();
+		res.view('user/new');
 	},
 
 	create: function (req, res, next) {
