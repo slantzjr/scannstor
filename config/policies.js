@@ -29,7 +29,7 @@ module.exports.policies = {
   '*': 'flash',
 
   user: {
-    'newUser': "flash",
+    'new': "flash",
     'create': "flash",
     'show': "canAccessProfile",
     'edit': "canAccessProfile",

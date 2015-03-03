@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-	'newUser': function (req, res) {
+	'new': function (req, res) {
 		res.view();
 	},
 
@@ -27,7 +27,7 @@ module.exports = {
 					err: err
 				}
 
-				return res.redirect('/user/newUser');
+				return res.redirect('/user/new');
 			}
 
 			req.session.authenticated = true;
