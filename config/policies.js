@@ -34,8 +34,19 @@ module.exports.policies = {
     'show': "canAccessProfile",
     'edit': "canAccessProfile",
     'update': "canAccessProfile",
-    '*': "sessionAuth"
-  }
+    'index': "canAccessProfile",
+    '*': "sessionAuth",
+  },
+
+  item: {
+    'new': "sessionAuth",
+    'create': "sessionAuth",
+    'index': "sessionAuth",
+    'show': "canAccessItem",
+    'update': "canAccessItem",
+    'edit': "canAccessItem",
+    '*': "sessionAuth",
+  },
 
   /***************************************************************************
   *                                                                          *

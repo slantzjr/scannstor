@@ -7,20 +7,29 @@
 
 module.exports = {
 
+  schema: true,
+
   attributes: {
+    owner: {
+        type: 'string',
+    },
+    ownerName: {
+        type: 'string',
+    },
     name: {
     	type: 'string',
     	required: true
     },
-
     description: {
     	type: 'string',
     	required: true
     },
+    sku: {
+    	type: 'string',
+    },
+    location: {
+        type: 'string',
+    },
+  },
 
-    image: {
-    	type: 'string'
-    }
-  }
 };
-

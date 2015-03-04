@@ -81,7 +81,7 @@ module.exports = {
 		} else {
 			var userObj = {
 				name: req.param('name'),
-				email: req.param('email')
+				email: req.param('email'),
 			}
 		}
 

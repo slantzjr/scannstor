@@ -30,15 +30,6 @@ module.exports = {
   		type: 'boolean',
   		defaultsTo: false
   	}
-
-  	// toJSON: function() {
-  	// 	var obj = this.toObject();
-  	// 	delete obj.password;
-  	// 	delete obj.confirmation;
-  	// 	delete obj.encryptedPassword;
-  	// 	delete obj._csrf;
-  	// 	return obj;
-  	// }
   },
 
   beforeValidation: function(values, next) {

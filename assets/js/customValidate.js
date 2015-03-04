@@ -21,4 +21,10 @@ $(document).ready(function () {
             element.text('OK!').addClass('valid');
         }
     });
+
+    $('#new-item-form').validate({
+        rules: {
+            
+        }
+    })
 });
