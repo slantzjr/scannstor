@@ -1,0 +1,12 @@
+<form action="/item/update/<%= item.id %>" method="POST" class="form-signin">
+	<h2> Update item </h2>
+
+	<input type="text" class="form-control" value="<%= item.name %>" name="name"></br>
+
+	<input type="text" class="form-control" value="<%= item.description %>" name="description"></br> 
+
+	<input type="text" class="form-control" value="<%= item.location %>" name="location"></br> 
+
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Continue"/>
+	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>
