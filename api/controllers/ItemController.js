@@ -43,22 +43,15 @@ module.exports = {
 				items: items[0].toJSON().inventory
 			});
 		});
-
-		// Item.findByOwner(req.session.User.id).exec(function foundItems (err, items) {
-		// 	if (err) return next(err);
-
-		// 	res.view({
-		// 		items: items
-		// 	});
-		// });
 	},
 
 	show: function (req, res, next) {
-		Item.findOne(req.param('id'), function foundItem (err, item) {
+		Item.find(req.param('id')).populate('owner').exec(function foundItem (err, item) {
 			if (err) return next(err);
 			if (!item) return next();
+
 			res.view({
-				item: item
+				item: item[0].toJSON()
 			});
 		});
 	},
