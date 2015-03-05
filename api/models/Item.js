@@ -11,10 +11,7 @@ module.exports = {
 
   attributes: {
     owner: {
-        type: 'string',
-    },
-    ownerName: {
-        type: 'string',
+        model: 'User',
     },
     name: {
     	type: 'string',

@@ -29,7 +29,12 @@ module.exports = {
   	admin: {
   		type: 'boolean',
   		defaultsTo: false
-  	}
+  	},
+
+    inventory: {
+        collection: 'Item',
+        via: 'owner'
+    },
   },
 
   beforeValidation: function(values, next) {

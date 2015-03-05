@@ -2,7 +2,6 @@
   <h3>Items</h3>
   <table class='table'>
     <tr>
-      <th>Owner</th>
       <th>Name</th>
       <th>Description</th>
       <th>Sku</th>
@@ -15,7 +14,6 @@
 
     <% _.each(items, function(item) { %>
     <tr data-id="<%= item.id %>" data-model="Item">
-    	<td><%= item.ownerName %></td>
     	<td><%= item.name %></td>
     	<td><%= item.description %></td>
       <td><%= item.sku %></td>

@@ -17,8 +17,7 @@ module.exports = {
 			description: req.param('description'),
 			sku: req.param('sku'),
 			location: req.param('location'),
-			owner: req.session.User.id,
-			ownerName: req.session.User.name,
+			owner: req.session.User,
 		}
 		
 		Item.create(itemObj, function itemCreated(err, item) {
@@ -37,14 +36,21 @@ module.exports = {
 	},	
 
 	index: function (req, res, next) {
-
-		Item.findByOwner(req.session.User.id).exec(function foundItems (err, items) {
-			if (err) return next(err);
+		User.find(req.session.User.id).populate('inventory').exec(function(err,items){
+			if (err) return res.negotiate(err);
 
 			res.view({
-				items: items
+				items: items[0].toJSON().inventory
 			});
 		});
+
+		// Item.findByOwner(req.session.User.id).exec(function foundItems (err, items) {
+		// 	if (err) return next(err);
+
+		// 	res.view({
+		// 		items: items
+		// 	});
+		// });
 	},
 
 	show: function (req, res, next) {
