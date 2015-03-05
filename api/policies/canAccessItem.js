@@ -4,16 +4,18 @@ module.exports = function(req, res, ok) {
   		req.session.flash = {
   			err: requireLoginError
   		}
-  		res.redirect('/session/new');
-  		return;
+  		return res.redirect('/session/new');
   	}
 
-  	Item.findOne(req.param('id'), function foundItem (err, item) {
+  	Item.findOne(req.param('id')).exec(function foundItem (err, item) {
   		if (err) {
-  			console.log('big ol error');
-  			return;
+  			// Need to respond here or it'll hang forever
+  			return res.negotiate(err);
   		}
-  		if (!item) return('item does not exist');
+  		if (!item) {
+  			// Need to respond here or it'll hang forever
+  			return res.notFound(new Error('item does not exist'));
+  		}
 
   		var sessionUserMatchesOwner = req.session.User.id === item.owner;
 		var isAdmin = req.session.User.admin;
@@ -23,10 +25,10 @@ module.exports = function(req, res, ok) {
 			req.session.flash = {
 				err: noRightsError
 			}
-			res.redirect('/session/new');
-			return;
-		} else {
-			ok();
+			return res.redirect('/session/new');
 		}
+		
+		// Continue onward
+		ok();
 	});
 };
