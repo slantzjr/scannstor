@@ -36,7 +36,7 @@ module.exports = {
 	},	
 
 	index: function (req, res, next) {
-		User.find(req.session.User.id).populate('inventory').exec(function(err,items){
+		User.find(req.param('id')).populate('inventory').exec(function(err,items){
 			if (err) return res.negotiate(err);
 
 			res.view({
