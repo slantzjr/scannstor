@@ -1,10 +1,24 @@
 <form action="/item/create" method="POST" class="form-signin" id="new-item-form">
 	<h2 class="form-signin-heading">Create a new item for your inventory</h2>
 
+	<% if(flash && flash.err) { %>
+		<ul class="alert alert-success">
+	<% Object.keys(flash.err).forEach(function(error) { %>
+		<li> <%- flash.err[error].message %></li>
+	<% }) %>
+	</ul>
+	<% } %>
+
 	<input type="text" class="form-control" placeholder="Name" name="name"/>
 	<input type="text" class="form-control" placeholder="Description" name="description"/>
 	<input type="text" class="form-control" placeholder="Sku code" name="sku"/>
 	<input type="text" class="form-control" placeholder="Location" name="location"/>
+
+	<% if (req.query.owner != undefined) { %>
+		<input type="hidden" name="owner" value="<%= req.query.owner %>"/>
+    <% } else { %>
+		<input type="hidden" name="owner" value="<%= req.session.User.id %>"/>
+	<% } %>
 	<input type="submit" class="btn btn-lb btn-primary btn-block" value="Add Item"/>
 	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 

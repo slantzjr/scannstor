@@ -8,7 +8,7 @@ module.exports = function(req, res, ok) {
   		return;
   	}
 
-	var sessionUserMatchesId = req.session.User.id === req.param('id');
+	var sessionUserMatchesId = req.session.User.id == req.param('id');
 	var isAdmin = req.session.User.admin;
 
 	if (!(sessionUserMatchesId || isAdmin)) {

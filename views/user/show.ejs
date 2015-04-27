@@ -10,7 +10,7 @@
 
 	<a class="btn btn-medium btn-primary" href="/user/edit/<%= user.id %>">Edit</a>
 	<a class="btn btn-medium btn-success" href="/item/index/<%= user.id %>">See Inventory</a>
-	<a class="btn btn-medium btn-primary" href="/item/new/">Add Item</a>
+	<a class="btn btn-medium btn-primary" href="/item/new/?owner=<%= user.id %>">Add Item</a>
 	<% if (session.authenticated && session.User.admin) { %>
 	  <a class="btn btn-medium btn-primary" href="/user/index/">See all users</a>
 	<% } %>

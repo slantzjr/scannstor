@@ -17,21 +17,25 @@ module.exports = {
 			description: req.param('description'),
 			sku: req.param('sku'),
 			location: req.param('location'),
-			owner: req.session.User,
+			owner: undefined,
 		}
-		
-		Item.create(itemObj, function itemCreated(err, item) {
 
-			if (err) {
-				console.log(err);
-				req.session.flash = {
-					err: err
+		var ownerId = req.param('owner');
+		// If a user is provided, add to that user instead of the current session.User
+		// TODO: Require UserCanView Permissions.
+		User.find(ownerId).exec(function(err,user) {
+			if (err) return res.negotiate(err);
+			itemObj.owner = user[0];
+			Item.create(itemObj, function itemCreated(err, item) {
+				if (err) {
+					console.log(err);
+					req.session.flash = {
+						err: err
+					}	
+					return res.redirect('/item/show'+item.id);
 				}
-				
-				return res.redirect('/item/show'+item.id);
-			}
-
-			res.redirect('/item/show/'+item.id);
+				res.redirect('/item/show/'+item.id);
+			});
 		});
 	},	
 

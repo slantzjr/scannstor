@@ -15,11 +15,11 @@ module.exports = function(req, res, ok) {
 		var isAdmin = req.session.User.admin;
 
 		if (!(sessionUserMatchesOwner || isAdmin)) {
-			var noRightsError = [{name: 'noRights', message: 'This item does not belong to you'}]
+			var noRightsError = [{name: 'noRights', message: 'That item does not belong to you'}]
 			req.session.flash = {
 				err: noRightsError
 			}
-			return res.redirect('/session/new');
+			return res.redirect(res.redirect('/user/show/' + req.session.User.id));
 		}
 		ok();
 	});

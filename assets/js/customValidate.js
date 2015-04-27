@@ -2,29 +2,43 @@ $(document).ready(function () {
     $('#sign-up-form').validate({
         rules: {
             name: {
-                required: true
+                required: true,
             },
             email: {
                 required: true,
-                email: true
+                email: true,
             },
             password: {
                 minlength: 6,
-                required: true
+                required: true,
             },
             confirmation: {
                 minlength: 6,
-                equalTo: "#password"
+                equalTo: "#password",
             }
         },
         success: function (element) {
-            element.text('OK!').addClass('valid');
+            element.addClass('valid');
         }
     });
 
     $('#new-item-form').validate({
         rules: {
-            
+            name: {
+                required: true,
+            },
+            description: {
+                required: true,
+            },
+            sku: {
+                required: true,
+            },
+            location: {
+                required: true,
+            },
+        },
+        success: function (element) {
+            element.text('OK!').addClass('valid');
         }
     })
 });

@@ -19,14 +19,13 @@
 
 module.exports.policies = {
 
-  /***************************************************************************
+  /**************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *
   * access)                                                                  *
   *                                                                          *
-  ***************************************************************************/
-
-  '*': 'flash',
+  **************************************************************************/
+  // '*': 'flash',
 
   user: {
     'new': "flash",
@@ -39,14 +38,16 @@ module.exports.policies = {
   },
 
   item: {
-    'new': "sessionAuth",
-    'create': "sessionAuth",
-    'index': "sessionAuth",
-    'show': "canAccessItem",
-    'update': "canAccessItem",
-    'edit': "canAccessItem",
-    '*': "sessionAuth",
+    '*': ['flash','sessionAuth'],
+    'create': 'canCreateItem',
+    'show': 'canAccessItem',
+    'update': 'canAccessItem',
+    'edit': 'canAccessItem',
   },
+
+  session: {
+    'new': 'flash',
+  }
 
   /***************************************************************************
   *                                                                          *
