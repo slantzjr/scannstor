@@ -1,0 +1,12 @@
+<form action="/item/create" method="POST" class="form-signin" id="new-item-form">
+	<h2 class="form-signin-heading">Create a new item for YOUR inventory</h2>
+
+	<input type="text" class="form-control" placeholder="Name" name="name"/>
+	<input type="text" class="form-control" placeholder="Description" name="description"/>
+	<input type="text" class="form-control" placeholder="Sku code" name="sku"/>
+	<input type="text" class="form-control" placeholder="Location" name="location"/>
+	
+	<input type="submit" class="btn btn-lb btn-primary btn-block" value="Add Item"/>
+	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+
+</form>
